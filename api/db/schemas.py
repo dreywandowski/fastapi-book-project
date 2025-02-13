@@ -1,8 +1,6 @@
 from enum import Enum
 from typing import OrderedDict
-
 from pydantic import BaseModel
-
 
 class Genre(str, Enum):
     """Book genres."""
@@ -13,7 +11,6 @@ class Genre(str, Enum):
     MYSTERY = "Mystery"
     ROMANCE = "Romance"
     THRILLER = "Thriller"
-
 
 class Book(BaseModel):
     """Book schema
@@ -27,6 +24,7 @@ class Book(BaseModel):
     author: str
     publication_year: int
     genre: Genre
+
 
 
 class InMemoryDB:
