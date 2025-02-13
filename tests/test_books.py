@@ -3,6 +3,10 @@ from tests import client
 def test_always_fails():
     assert 1 == 2  
 
+def test_always_passes():
+    assert 2 + 2 == 4  
+
+
 def test_get_all_books():
     response = client.get("/books/")
     assert response.status_code == 200
