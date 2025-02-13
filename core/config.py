@@ -1,4 +1,8 @@
 import secrets
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9653950 (fresh git)
 from pydantic_settings import BaseSettings
 
 

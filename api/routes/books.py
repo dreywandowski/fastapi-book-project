@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9653950 (fresh git)
 from typing import OrderedDict
 
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
+<<<<<<< HEAD
+=======
+from fastapi.exceptions import HTTPException
+>>>>>>> 9653950 (fresh git)
 
 from api.db.schemas import Book, Genre, InMemoryDB
 
@@ -48,9 +55,25 @@ async def create_book(book: Book):
 async def get_books() -> OrderedDict[int, Book]:
     return db.get_books()
 
+<<<<<<< HEAD
 
 @router.put("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
 async def update_book(book_id: int, book: Book) -> Book:
+=======
+@router.get("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
+async def get_book_by_id(book_id: int) -> Book:
+    book = db.get_book(book_id)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return book
+
+
+@router.put("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
+async def update_book(book_id: int, book: Book) -> Book:
+    existing_book = db.get_book(book_id)
+    if existing_book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+>>>>>>> 9653950 (fresh git)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content=db.update_book(book_id, book).model_dump(),
@@ -59,6 +82,14 @@ async def update_book(book_id: int, book: Book) -> Book:
 
 @router.delete("/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_book(book_id: int) -> None:
+<<<<<<< HEAD
     db.delete_book(book_id)
     return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
 
+=======
+    existing_book = db.get_book(book_id)
+    if existing_book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
+    db.delete_book(book_id)
+    return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
+>>>>>>> 9653950 (fresh git)

@@ -1,7 +1,14 @@
 from enum import Enum
 from typing import OrderedDict
+<<<<<<< HEAD
 from pydantic import BaseModel
 
+=======
+
+from pydantic import BaseModel
+
+
+>>>>>>> 9653950 (fresh git)
 class Genre(str, Enum):
     """Book genres."""
 
@@ -12,18 +19,30 @@ class Genre(str, Enum):
     ROMANCE = "Romance"
     THRILLER = "Thriller"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9653950 (fresh git)
 class Book(BaseModel):
     """Book schema
 
     Args:
         BaseModel (BaseModel): Pydantic base model.
     """
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9653950 (fresh git)
     id: int
     title: str
     author: str
     publication_year: int
     genre: Genre
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9653950 (fresh git)
 class InMemoryDB:
     def __init__(self):
         self.books: OrderedDict[int, Book] = {}
@@ -35,7 +54,11 @@ class InMemoryDB:
             OrderedDict[int, Book]: Ordered dictionary of books.
         """
         return self.books
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 9653950 (fresh git)
     def add_book(self, book: Book) -> Book:
         """Adds book to database.
 
@@ -71,7 +94,11 @@ class InMemoryDB:
         self.books.update({book_id: data})
         return self.books.get(book_id)
 
+<<<<<<< HEAD
     def delete_book(self, book_id: int) -> None: 
+=======
+    def delete_book(self, book_id: int) -> None:
+>>>>>>> 9653950 (fresh git)
         """Deletes a specific book from database.
 
         Args:
@@ -79,4 +106,7 @@ class InMemoryDB:
         """
         if book_id in self.books:
             del self.books[book_id]
+<<<<<<< HEAD
             
+=======
+>>>>>>> 9653950 (fresh git)
