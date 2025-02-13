@@ -1,5 +1,7 @@
 from tests import client
 
+def test_always_fails():
+    assert 1 == 2  
 
 def test_get_all_books():
     response = client.get("/books/")
