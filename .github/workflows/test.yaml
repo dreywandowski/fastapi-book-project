@@ -25,5 +25,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Tests
-        continue-on-error: true
-        run: pytest --maxfail=5 --disable-warnings || true
+        run: pytest
+
+      - name: Fail on Test Errors
+        if: failure()
+        run: exit 1
