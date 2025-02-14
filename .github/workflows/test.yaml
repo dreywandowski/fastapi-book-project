@@ -27,6 +27,6 @@ jobs:
       - name: Run Tests
         run: pytest
 
-      - name: Verify Test Results
+      - name: Fail on Test Errors
         if: failure()
         run: exit 1
